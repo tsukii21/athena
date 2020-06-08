@@ -6,7 +6,10 @@ const Nav = () => {
       <a className="hover:text-gray-700 duration-500" href="#">
         athena
       </a>
-      <a className="hover:text-gray-700 duration-500" href="#">
+      <a
+        className="hover:text-gray-700 duration-500"
+        href="https://github.com/tsukii21/athena"
+      >
         github repo
       </a>
     </nav>
