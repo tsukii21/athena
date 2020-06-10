@@ -1,16 +1,17 @@
 import React from "react";
+import { AiFillGithub } from "react-icons/ai";
 
 const Nav = () => {
   return (
-    <nav className="fixed w-full flex justify-between px-16 py-4 text-4xl font-hairline ">
-      <a className="hover:text-gray-700 duration-500" href="#">
+    <nav className="fixed w-full flex justify-between items-center px-16 py-4 text-4xl font-hairline ">
+      <a className="nav-link duration-500" href="#">
         athena
       </a>
       <a
-        className="hover:text-gray-700 duration-500"
+        className="nav-link duration-500"
         href="https://github.com/tsukii21/athena"
       >
-        github repo
+        <AiFillGithub />
       </a>
     </nav>
   );
