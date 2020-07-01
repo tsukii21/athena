@@ -19,7 +19,7 @@ const Home = () => {
         <form onSubmit={handleSubmit}>
           <input
             onChange={handleChange}
-            className="text-center border-none bg-transparent focus:outline-none text-6xl"
+            className="text-center border-none bg-transparent focus:outline-none text-6xl font-hairline"
             type="text"
             value={domain}
             placeholder="enter domain"
