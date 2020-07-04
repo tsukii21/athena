@@ -1,32 +1,23 @@
-import React, { useState } from "react";
-import Loading from "./Loading";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [domain, setDomain] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const handleChange = (event) => {
-    setDomain(event.target.value);
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSubmitted(true);
-  };
   return (
-    <div className="w-full h-full flex justify-center items-center">
-      {submitted ? (
-        <Loading />
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <input
-            onChange={handleChange}
-            className="text-center border-none bg-transparent focus:outline-none text-6xl font-hairline"
-            type="text"
-            value={domain}
-            placeholder="enter domain"
-            required
-          />
-        </form>
-      )}
+    <div className="w-full h-full flex flex-col justify-center items-center">
+      <h1
+        style={{ fontSize: "6rem", color: "#00adb5" }}
+        className="animate__animated animate__fadeInDown font-hairline"
+      >
+        athena
+      </h1>
+      <h3 className="w-1/4 text-gray-500 text-center animate__animated animate__fadeInDown text-2xl font-hairline">
+        a fully automated tool to reconnaissance against a target
+      </h3>
+      <Link to="/search">
+        <button class="animate__animated animate__fadeIn animate__delay-1s btn mt-4 text-2xl py-2 px-4 rounded-full duration-500">
+          Search
+        </button>
+      </Link>
     </div>
   );
 };

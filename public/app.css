@@ -1,3 +1,33 @@
+button:focus {
+  outline: none;
+}
+
 .nav-link:hover {
   color: #00adb5;
+}
+
+.btn {
+  color: #00adb5;
+}
+
+.btn:hover {
+  background-color: rgba(0, 173, 181, 0.5);
+  color: white;
+}
+
+.btn-normal {
+  background-color: #00adb5;
+}
+
+.btn-normal:hover {
+  background-color: rgba(0, 173, 181, 0.5);
+  color: white;
+}
+
+.link {
+  color: #00adb5;
+}
+
+.link:hover {
+  color: rgba(0, 173, 181, 0.5);
 }
