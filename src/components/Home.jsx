@@ -8,7 +8,7 @@ const Home = (props) => {
         style={{ fontSize: "6rem", color: "#00adb5" }}
         className="animate__animated animate__fadeInDown font-hairline"
       >
-        athena
+        ath3na
       </h1>
       <h3 className="w-1/4 text-gray-500 text-center animate__animated animate__fadeInDown text-2xl font-hairline">
         a fully automated tool to reconnaissance against a target

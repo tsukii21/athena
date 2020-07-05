@@ -6,7 +6,7 @@ const Nav = (props) => {
   return (
     <nav className="fixed w-full flex justify-between items-center px-16 py-4 text-4xl font-hairline ">
       <Link to="/">
-        <h1 className="nav-link duration-500">athena</h1>
+        <h1 className="nav-link duration-500">ath3na</h1>
       </Link>
       {props.session.loggedIn ? (
         <button
