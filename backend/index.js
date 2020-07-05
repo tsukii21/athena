@@ -13,9 +13,17 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 
+const connection = require("./database/database");
+connection.connect((err) => {
+  if (!err) console.log("Connection Established Successfully");
+  else console.log("Connection Failed!" + JSON.stringify(err, undefined, 2));
+});
+
 const subdomainrouter = require("./routes/subdomain");
+const authRouter = require("./routes/auth");
 
 app.use("/subdomain", subdomainrouter);
+app.use("/auth", authRouter);
 
 const server = http.createServer(app);
 

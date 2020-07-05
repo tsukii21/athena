@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import Loading from "./Loading";
 
-const Search = () => {
+const Search = (props) => {
   const [domain, setDomain] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const handleChange = (event) => {
@@ -11,7 +12,7 @@ const Search = () => {
     event.preventDefault();
     setSubmitted(true);
   };
-  return (
+  return props.session.loggedIn ? (
     <div className="w-full h-full flex justify-center items-center">
       {submitted ? (
         <Loading />
@@ -31,6 +32,8 @@ const Search = () => {
         </form>
       )}
     </div>
+  ) : (
+    <Redirect to="/" />
   );
 };
 
