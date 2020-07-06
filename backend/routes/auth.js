@@ -1,27 +1,34 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const md5 = require("md5");
+const connection = require("../database/config");
 
 const authRouter = express.Router();
 authRouter.use(bodyParser.json());
 
-const connection = require("../database/database");
 authRouter
+  //registration route (/auth/register)
   .post("/register", function (req, res) {
-    var username = req.body.username;
-    var email = req.body.email;
-    var password = req.body.password;
+    const newUser = req.body;
+    //checking whether username and email are unique
     connection.query(
       "SELECT * FROM accounts WHERE username = ? OR email = ?",
-      [username, email],
+      [newUser.username, newUser.email],
       function (error, results, fields) {
         if (results.length === 0) {
+          //username and email are unique
+          //proceeding with regitration
           connection.query(
             "INSERT INTO `accounts` (`username`, `password`, `email`) VALUES (?, ?,?)",
-            [username, password, email],
+            [newUser.username, md5(newUser.password), newUser.email],
             function (error, results, fields) {
               if (!error) {
-                res.send({ error: "", username: username });
+                //no errors and registration successfull
+                //responding with username of new user
+                res.send({ error: "", username: newUser.username });
               } else {
+                //errors found and registration failed
+                //responding with message
                 res.send({
                   error: "Registration failed due to some error",
                   username: "",
@@ -30,6 +37,8 @@ authRouter
             }
           );
         } else {
+          //username and/or email not unique
+          //responding with message
           res.send({
             error: "Username/email already taken!",
             username: "",
@@ -38,18 +47,22 @@ authRouter
       }
     );
   })
-  .post("/login", function (request, response) {
-    var username = request.body.username;
-    var password = request.body.password;
-
+  //login route (/auth/login)
+  .post("/login", function (req, res) {
+    const user = req.body;
+    //checking for validity of provided credentials
     connection.query(
       "SELECT * FROM accounts WHERE username = ? AND password = ?",
-      [username, password],
+      [user.username, md5(user.password)],
       function (error, results, fields) {
         if (results.length > 0) {
-          response.send({ error: "", username: username });
+          //credentials provided are valid
+          //responding with username
+          res.send({ error: "", username: user.username });
         } else {
-          response.send({
+          //credentials provided are incorrect
+          //responding with message
+          res.send({
             error: "Incorrect Username and/or Password!",
             username: "",
           });
